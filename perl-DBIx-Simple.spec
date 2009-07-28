@@ -1,21 +1,19 @@
+%define upstream_name    DBIx-Simple
+%define upstream_version 1.32
 
-%define realname   DBIx-Simple
-%define version    1.32
-%define release    %mkrel 1
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
 
-Name:       perl-%{realname}
-Version:    %{version}
-Release:    %{release}
-License:    GPL or Artistic
-Group:      Development/Perl
 Summary:    Easy-to-use OO interface to DBI
-Source:     http://www.cpan.org/modules/by-module/DBIx/%{realname}-%{version}.tar.gz
-Url:        http://search.cpan.org/dist/%{realname}
-BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: perl-devel
-BuildRequires: perl(DBI)
+License:    GPL+ or Artistic
+Group:      Development/Perl
+Url:        http://search.cpan.org/dist/%{upstream_name}
+Source0:    http://www.cpan.org/modules/by-module/DBIx/%{upstream_name}-%{upstream_version}.tar.gz
 
+BuildRequires: perl(DBI)
 BuildArch: noarch
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 
@@ -34,7 +32,7 @@ error checking, but it also makes immediate error checking simply
 '$db->query(...) or die $db->error'.
 
 %prep
-%setup -q -n %{realname}-%{version} 
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -55,6 +53,4 @@ rm -rf $RPM_BUILD_ROOT
 %doc META.yml Changes README
 %{_mandir}/man3/*
 %perl_vendorlib/*
-
-
 
