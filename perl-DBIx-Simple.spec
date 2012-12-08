@@ -1,22 +1,21 @@
 %define upstream_name    DBIx-Simple
 %define upstream_version 1.35
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 6
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	7
 
-Summary:    Easy-to-use OO interface to DBI
-License:    GPL+ or Artistic
-Group:      Development/Perl
-Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/modules/by-module/DBIx/%{upstream_name}-%{upstream_version}.tar.gz
+Summary:	Easy-to-use OO interface to DBI
+License:	GPL+ or Artistic
+Group:		Development/Perl
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/DBIx/%{upstream_name}-%{upstream_version}.tar.gz
 
-BuildRequires: perl(DBI)
-BuildArch: noarch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
+BuildRequires:	perl(DBI)
+BuildRequires:	perl-devel
+BuildArch:	noarch
 
 %description
-
 DBIx::Simple provides a simplified interface to DBI, Perl's powerful
 database module.
 
@@ -35,22 +34,57 @@ error checking, but it also makes immediate error checking simply
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
+%__perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
 make test
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc META.yml Changes README
 %{_mandir}/man3/*
-%perl_vendorlib/*
+%{perl_vendorlib}/*
+
+
+%changelog
+* Sun Jan 22 2012 Oden Eriksson <oeriksson@mandriva.com> 1.350.0-6mdv2012.0
++ Revision: 765166
+- rebuilt for perl-5.14.2
+- rebuilt for perl-5.14.x
+- cleanup temporary deps, this was added in perl-devel instead
+
+* Fri Jan 20 2012 Oden Eriksson <oeriksson@mandriva.com> 1.350.0-4
++ Revision: 763239
+- force it
+- rebuild
+
+* Sat Apr 23 2011 Funda Wang <fwang@mandriva.org> 1.350.0-3
++ Revision: 657771
+- rebuild for updated spec-helper
+- rebuild for updated spec-helper
+
+* Wed Jan 05 2011 Guillaume Rousse <guillomovitch@mandriva.org> 1.350.0-1mdv2011.0
++ Revision: 628708
+- update to new version 1.35
+
+* Fri Dec 17 2010 Guillaume Rousse <guillomovitch@mandriva.org> 1.340.0-1mdv2011.0
++ Revision: 622680
+- update to new version 1.34
+
+* Mon Dec 06 2010 Guillaume Rousse <guillomovitch@mandriva.org> 1.330.0-1mdv2011.0
++ Revision: 612075
+- update to new version 1.33
+
+* Tue Jul 28 2009 Jérôme Quelin <jquelin@mandriva.org> 1.320.0-1mdv2011.0
++ Revision: 401669
+- rebuild using %%perl_convert_version
+- fixed license field
+
+* Fri May 15 2009 Jérôme Quelin <jquelin@mandriva.org> 1.32-1mdv2010.0
++ Revision: 375954
+- import perl-DBIx-Simple
+
 
