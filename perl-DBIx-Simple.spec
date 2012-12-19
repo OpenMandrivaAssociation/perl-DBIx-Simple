@@ -1,15 +1,15 @@
-%define upstream_name    DBIx-Simple
-%define upstream_version 1.35
+%define	module	DBIx-Simple
+%define	modver	1.35
 
-Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
-Release:	7
+Name:		perl-%{module}
+Version:	%{perl_convert_version %{modver}}
+Release:	8
 
 Summary:	Easy-to-use OO interface to DBI
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		http://search.cpan.org/dist/%{upstream_name}
-Source0:	http://www.cpan.org/modules/by-module/DBIx/%{upstream_name}-%{upstream_version}.tar.gz
+Url:		http://search.cpan.org/dist/%{module}
+Source0:	http://www.cpan.org/modules/by-module/DBIx/%{module}-%{modver}.tar.gz
 
 BuildRequires:	perl(DBI)
 BuildRequires:	perl-devel
@@ -31,10 +31,10 @@ error checking, but it also makes immediate error checking simply
 '$db->query(...) or die $db->error'.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{module}-%{modver}
 
 %build
-%__perl Makefile.PL INSTALLDIRS=vendor
+perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
@@ -48,8 +48,11 @@ make test
 %{_mandir}/man3/*
 %{perl_vendorlib}/*
 
-
 %changelog
+* Wed Dec 19 2012 Per Øyvind Karlsen <peroyvind@mandriva.org> 1.350.0-8
+- rebuild for perl-5.16.2
+- cleanups
+
 * Sun Jan 22 2012 Oden Eriksson <oeriksson@mandriva.com> 1.350.0-6mdv2012.0
 + Revision: 765166
 - rebuilt for perl-5.14.2
