@@ -3,7 +3,7 @@
 
 Name:		perl-%{module}
 Version:	%{perl_convert_version %{modver}}
-Release:	8
+Release:	9
 
 Summary:	Easy-to-use OO interface to DBI
 License:	GPL+ or Artistic
