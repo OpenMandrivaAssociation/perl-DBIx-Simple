@@ -4,7 +4,7 @@
 Summary:	Easy-to-use OO interface to DBI
 Name:		perl-%{module}
 Version:	%{perl_convert_version %{modver}}
-Release:	10
+Release:	11
 License:	GPLv2+ or Artistic
 Group:		Development/Perl
 Url:		http://search.cpan.org/dist/%{module}
