@@ -1,14 +1,12 @@
 %define	module	DBIx-Simple
-%define	modver	1.35
-
 Summary:	Easy-to-use OO interface to DBI
 Name:		perl-%{module}
-Version:	%{perl_convert_version %{modver}}
-Release:	22
+Version:	1.35
+Release:	23
 License:	GPLv2+ or Artistic
 Group:		Development/Perl
-Url:		https://search.cpan.org/dist/%{module}
-Source0:	http://www.cpan.org/modules/by-module/DBIx/%{module}-%{modver}.tar.gz
+Url:		https://metacpan.org/dist/%{module}
+Source0:	http://www.cpan.org/modules/by-module/DBIx/%{module}-%{version}.tar.gz
 BuildArch:	noarch
 BuildRequires:	make
 BuildRequires:	perl(Test::More)
@@ -31,7 +29,7 @@ error checking, but it also makes immediate error checking simply
 '$db->query(...) or die $db->error'.
 
 %prep
-%setup -qn %{module}-%{modver}
+%setup -qn %{module}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
