@@ -1,8 +1,8 @@
 %define	module	DBIx-Simple
 Summary:	Easy-to-use OO interface to DBI
 Name:		perl-%{module}
-Version:	1.35
-Release:	23
+Version:	1.37
+Release:	1
 License:	GPLv2+ or Artistic
 Group:		Development/Perl
 Url:		https://metacpan.org/dist/%{module}
@@ -29,7 +29,7 @@ error checking, but it also makes immediate error checking simply
 '$db->query(...) or die $db->error'.
 
 %prep
-%setup -qn %{module}-%{version}
+%setup -qn %{module}-%{version} -n DBIx-Simple-1.37
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
